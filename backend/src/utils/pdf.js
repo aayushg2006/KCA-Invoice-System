@@ -7,15 +7,23 @@ async function generateInvoicePdf(invoice) {
   const template = getTemplateMeta();
 
   try {
+    // --- NEW: Disable Puppeteer's default 30-second timeouts ---
+    page.setDefaultNavigationTimeout(0);
+    page.setDefaultTimeout(0);
+
     const html = createInvoiceHtml(invoice);
     await page.setViewport({
       width: template.width,
       height: template.height,
       deviceScaleFactor: 1,
     });
+    
     await page.emulateMediaType('screen');
+    
+    // --- UPDATED: Added timeout: 0 to the options object ---
     await page.setContent(html, {
       waitUntil: ['domcontentloaded', 'networkidle0'],
+      timeout: 0, 
     });
 
     const pdf = await page.pdf({
