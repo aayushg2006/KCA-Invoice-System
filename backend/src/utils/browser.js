@@ -1,21 +1,19 @@
-const puppeteer = require('puppeteer-core');
-
+const puppeteer = require('puppeteer');
 const { env } = require('../config/env');
 
 let browserPromise = null;
 
 async function getBrowser() {
-  if (!env.browserPath) {
-    throw new Error(
-      'No Chrome/Edge browser was found. Set PUPPETEER_EXECUTABLE_PATH in backend/.env.'
-    );
-  }
-
   if (!browserPromise) {
     browserPromise = puppeteer.launch({
-      executablePath: env.browserPath,
+      // Uses your Windows path locally, but falls back to the cloud browser on Render
+      executablePath: env.browserPath || undefined,
       headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      args: [
+        '--no-sandbox', 
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage' // CRITICAL: Prevents the PDF generation from crashing on Render
+      ],
     });
   }
 
