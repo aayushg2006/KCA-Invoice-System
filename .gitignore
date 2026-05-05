@@ -1,0 +1,53 @@
+# Dependencies
+node_modules/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+!.env.*.example
+backend/src/config/firebase-service-account.json
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build output and caches
+coverage/
+.nyc_output/
+.cache/
+dist/
+build/
+tmp/
+backend/tmp/
+
+# Expo / React Native
+.expo/
+.expo-shared/
+web-build/
+expo-env.d.ts
+.metro-health-check*
+mobile_app/android/
+mobile_app/ios/
+mobile_app/app-example/
+
+# TypeScript
+*.tsbuildinfo
+
+# Editor / OS files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Certificates and signing keys
+*.pem
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
