@@ -58,6 +58,7 @@ const env = {
   port: readNumber('PORT', 4000),
   corsOrigin: readString('CORS_ORIGIN', '*'),
   firebaseStorageBucket: readString('FIREBASE_STORAGE_BUCKET'),
+  firebaseServiceAccountJson: readString('FIREBASE_SERVICE_ACCOUNT_JSON'),
   firebaseServiceAccountPath: resolveFromBackendRoot(
     readString('FIREBASE_SERVICE_ACCOUNT_PATH', './src/config/firebase-service-account.json')
   ),

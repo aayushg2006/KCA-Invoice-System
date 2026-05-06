@@ -12,8 +12,8 @@ export default function ModalScreen() {
         stores it in Firebase, and returns the PDF so the app can save it on the phone.
       </Text>
       <Text style={styles.copy}>
-        For a physical Android device, set `EXPO_PUBLIC_API_BASE_URL` to your backend URL before
-        building or starting Expo so the app can reach the server outside localhost.
+        The app now points to the deployed Cloud Run backend by default. Set
+        `EXPO_PUBLIC_API_BASE_URL` only when you want to override it for a different backend.
       </Text>
     </View>
   );

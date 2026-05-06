@@ -43,7 +43,11 @@
       ]
     ],
     "extra": {
-      "apiBaseUrl": "http://127.0.0.1:4000/api"
+      "apiBaseUrl": "https://kca-invoice-backend-497170441120.asia-south1.run.app/api",
+      "router": {},
+      "eas": {
+        "projectId": "553cee58-5abf-474d-a031-07bdd3f3ef08"
+      }
     },
     "experiments": {
       "typedRoutes": true,

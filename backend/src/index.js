@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 
 const { env } = require('./config/env');
+const { getDependencyHealth } = require('./services/healthService');
 const { closeBrowser } = require('./utils/browser');
 const {
   createInvoice,
@@ -25,6 +26,18 @@ app.get('/api/health', (_req, res) => {
     service: 'kca-invoice-backend',
     timestamp: new Date().toISOString(),
   });
+});
+
+app.get('/api/health/dependencies', async (_req, res, next) => {
+  try {
+    const dependencyHealth = await getDependencyHealth();
+    res.status(dependencyHealth.ok ? 200 : 503).json({
+      service: 'kca-invoice-backend',
+      ...dependencyHealth,
+    });
+  } catch (error) {
+    next(error);
+  }
 });
 
 app.get('/api/invoices/recent', async (req, res, next) => {

@@ -1,12 +1,25 @@
 # Dependencies
 node_modules/
 
-# Environment and secrets
+# Environment files and secrets
 .env
 .env.*
 !.env.example
 !.env.*.example
+*.local
+.envrc
+.npmrc
+.pnpmrc
 backend/src/config/firebase-service-account.json
+backend/src/config/firebase-service-account*.json
+**/firebase-service-account*.json
+**/service-account*.json
+**/serviceAccount*.json
+google-services.json
+GoogleService-Info.plist
+.firebase/
+.firebaserc.local
+firebase-debug.log*
 
 # Logs
 *.log
@@ -19,6 +32,9 @@ pnpm-debug.log*
 coverage/
 .nyc_output/
 .cache/
+.eslintcache
+.gradle/
+.kotlin/
 dist/
 build/
 tmp/
@@ -33,6 +49,13 @@ expo-env.d.ts
 mobile_app/android/
 mobile_app/ios/
 mobile_app/app-example/
+mobile_app/builds/
+
+# Mobile build artifacts
+*.apk
+*.aab
+*.apks
+*.ipa
 
 # TypeScript
 *.tsbuildinfo
@@ -47,6 +70,7 @@ Thumbs.db
 *.pem
 *.orig.*
 *.jks
+*.keystore
 *.p8
 *.p12
 *.key

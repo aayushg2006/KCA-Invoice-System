@@ -1,0 +1,9 @@
+.gcloudignore
+.git
+.gitignore
+node_modules
+npm-debug.log
+.env
+.cache
+tmp
+src/config/firebase-service-account.json

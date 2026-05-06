@@ -1,50 +1,40 @@
-# Welcome to your Expo app 👋
+# KCA Invoice System Mobile App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This folder contains the Expo / React Native client for the KCA Invoice System.
 
-## Get started
+## Main screens
 
-1. Install dependencies
+- `Create` tab for invoice creation
+- `Recent` tab for invoice history and PDF resharing
+- `invoice-preview` route for in-app PDF preview
+- `modal` route for usage help
 
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+## Run locally
 
 ```bash
-npm run reset-project
+cd mobile_app
+npm install
+npx expo start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Optional API override:
 
-## Learn more
+```bash
+set EXPO_PUBLIC_API_BASE_URL=http://YOUR_IP:4000/api
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+## Build commands
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```bash
+npm run lint
+npm run android
+npm run ios
+npm run web
+npx eas-cli build --platform android --profile preview
+```
 
-## Join the community
+## Notes
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- The primary invoice flow uses the backend API and does not directly write to Firebase from the app.
+- The default deployed backend URL is configured in `app.json` and `eas.json`.
+- For full system setup, backend configuration, Firebase cleanup steps, and deployment notes, see the root [README](../README.md).

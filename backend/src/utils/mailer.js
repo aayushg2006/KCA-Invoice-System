@@ -34,6 +34,24 @@ function getTransporter() {
   return transporter;
 }
 
+async function verifyMailerConnection() {
+  const activeTransporter = getTransporter();
+
+  if (!activeTransporter) {
+    return {
+      ok: false,
+      reason: 'SMTP credentials are missing.',
+    };
+  }
+
+  await activeTransporter.verify();
+
+  return {
+    ok: true,
+    provider: env.smtpHost || env.smtpService,
+  };
+}
+
 function buildInvoiceEmail(invoice) {
   return {
     subject: `KCA Invoice ${invoice.invoiceNumber}`,
@@ -83,5 +101,7 @@ async function sendInvoiceEmail(invoice, pdfBuffer) {
 }
 
 module.exports = {
+  getTransporter,
   sendInvoiceEmail,
+  verifyMailerConnection,
 };
